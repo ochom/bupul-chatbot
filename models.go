@@ -8,3 +8,10 @@ type IncomingSMS struct {
 	To     string `json:"to,omitempty" form:"to"`
 	From   string `json:"from,omitempty" form:"from"`
 }
+
+// SMS output
+type SMS struct {
+	Mobile    string `json:"mobile,omitempty"`
+	Text      string `json:"text,omitempty"`
+	ShortCode string `json:"shortCode,omitempty"`
+}

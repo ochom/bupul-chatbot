@@ -43,6 +43,19 @@ func main() {
 			return
 		}
 
+		res, err := SendSMS(ctx, SMS{
+			Mobile:    data.From,
+			Text:      "Hi from API",
+			ShortCode: "28009",
+		})
+
+		if err != nil {
+			log.Println("error", err.Error())
+			return
+		}
+
+		log.Println(res)
+
 		ctx.JSON(http.StatusOK, data)
 	})
 
