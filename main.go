@@ -44,7 +44,10 @@ func main() {
 			return
 		}
 
-		prompt := "Jackson is the the child of Jane Juma. Jackson has left school at 1:20am. He is in bus with number plate KLC2393 with driver Wycliffe. Jackson is using route North. Jackson is arriving at home at 2:30 am.\n\nQuestion: %s\nChat bot:"
+		prompt, err := GetPrompt(ctx, data.From)
+		if err != nil {
+			log.Println("error", err.Error())
+		}
 
 		ans, err := QueryOpenAI(ctx, fmt.Sprintf(prompt, data.Text))
 		if err != nil {
