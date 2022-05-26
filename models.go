@@ -15,3 +15,14 @@ type SMS struct {
 	Text      string `json:"text,omitempty"`
 	ShortCode string `json:"shortCode,omitempty"`
 }
+
+// Choice ...
+type Choice struct {
+	Text string `json:"text,omitempty"`
+}
+
+// OpenAIResponse ...
+type OpenAIResponse struct {
+	ID      string   `json:"id,omitempty"`
+	Choices []Choice `json:"choices,omitempty"`
+}

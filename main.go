@@ -54,9 +54,18 @@ func main() {
 			return
 		}
 
-		log.Println(res)
+		log.Println(&res)
 
-		ctx.JSON(http.StatusOK, data)
+		prompt := "Jackson is the the child of Jane Juma. Jackson has left school at 1:20am. He is in bus with number plate KLC2393 with driver Wycliffe. Jackson is using route North. Jackson is arriving at home at 2:30 am.\n\nQuestion: When is her coming?\nChat bot:"
+
+		ans, err := QueryOpenAI(ctx, prompt)
+		if err != nil {
+			log.Println("error", err.Error())
+		}
+
+		ansText := ans.Choices[0].Text
+
+		ctx.String(http.StatusOK, ansText)
 	})
 
 	// get api callback from chat AI
