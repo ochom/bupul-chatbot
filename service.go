@@ -30,7 +30,7 @@ func SendSMS(ctx context.Context, sms SMS) (*string, error) {
 		return nil, err
 	}
 
-	username, err := MustGetEnv("")
+	username, err := MustGetEnv("AT_USERNAME")
 	if err != nil {
 		return nil, err
 	}
