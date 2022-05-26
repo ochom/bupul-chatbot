@@ -30,8 +30,13 @@ func SendSMS(ctx context.Context, sms SMS) (*string, error) {
 		return nil, err
 	}
 
+	username, err := MustGetEnv("")
+	if err != nil {
+		return nil, err
+	}
+
 	data := url.Values{}
-	data.Add("username", "sandbox")
+	data.Add("username", username)
 	data.Add("to", sms.Mobile)
 	data.Add("message", sms.Text)
 	data.Add("from", sms.ShortCode)
